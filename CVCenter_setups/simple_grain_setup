@@ -1,0 +1,2078 @@
+var o, p;
+o = [
+	Library.prNew,  IdentityDictionary.prNew,  Array.prNew(32),  Event.prNew,  
+	Array.prNew(32),  Event.prNew,  Array.prNew(64),  "Add some notes if you like",  
+	Event.prNew,  Array.prNew(4),  Array.prNew(5),  Event.prNew,  
+	Array.prNew(16),  Event.prNew,  Array.prNew(16),  Event.prNew,  
+	Array.prNew(16),  Event.prNew,  Array.prNew(16),  Event.prNew,  
+	Array.prNew(16),  ControlSpec.prNew,  Array.prNew(5),  Array.prNew(5),  
+	LinearWarp.prNew,  ControlSpec.prNew,  "",  Array.prNew(5),  
+	Array.prNew(5),  Array.prNew(5),  Array.prNew(5),  Array.prNew(5),  
+	Array.prNew(5),  Event.prNew,  Array.prNew(16),  Event.prNew,  
+	Array.prNew(8),  NetAddr.prNew,  "192.168.1.4",  Event.prNew,  
+	Array.prNew(16),  Event.prNew,  Array.prNew(8),  NetAddr.prNew,  
+	"192.168.1.4",  Event.prNew,  Array.prNew(16),  Event.prNew,  
+	Array.prNew(8),  NetAddr.prNew,  "192.168.1.4",  Event.prNew,  
+	Array.prNew(16),  Event.prNew,  Array.prNew(8),  NetAddr.prNew,  
+	"192.168.1.4",  Event.prNew,  Array.prNew(16),  Event.prNew,  
+	Array.prNew(8),  NetAddr.prNew,  "192.168.1.4",  Event.prNew,  
+	Array.prNew(16),  "(1..5)",  "1",  "/vosc/blue%",  
+	Event.prNew,  Array.prNew(4),  Event.prNew,  Array.prNew(32),  
+	ControlSpec.prNew,  FaderWarp.prNew,  "",  "Add some notes if you like",  
+	Event.prNew,  Array.prNew(8),  Event.prNew,  Array.prNew(4),  
+	SimpleController.prNew,  CV.prNew,  IdentityDictionary.prNew,  Array.prNew(16),  
+	{ |cv| Ndef('stereo') !? { Ndef('stereo').set('amp', cv.value) }},  Array.prNew(2),  "{ |cv| Ndef('stereo') !? { Ndef('stereo').set('amp', cv.value) }}",  Event.prNew,  
+	Array.prNew(4),  Array.prNew(2),  "{ |cv| Ndef('stereo') !? { Ndef('stereo').xset('amp', cv.value) }}",  Event.prNew,  
+	Array.prNew(20),  Event.prNew,  Array.prNew(32),  Event.prNew,  
+	Array.prNew(64),  "Add some notes if you like",  Event.prNew,  Array.prNew(8),  
+	Event.prNew,  Array.prNew(4),  SimpleController.prNew,  CV.prNew,  
+	Array.prNew(5),  ControlSpec.prNew,  Array.prNew(5),  Array.prNew(5),  
+	LinearWarp.prNew,  ControlSpec.prNew,  "",  Array.prNew(5),  
+	Array.prNew(5),  Array.prNew(5),  Array.prNew(5),  IdentityDictionary.prNew,  
+	Array.prNew(16),  { |cv| Ndef('filter') !? { Ndef('filter').setn('multFreq', cv.value) }},  Array.prNew(2),  "{ |cv| Ndef('filter') !? { Ndef('filter').setn('multFreq', cv.value) }}",  
+	Event.prNew,  Array.prNew(4),  Array.prNew(2),  "{ |cv| Ndef('filter') !? { Ndef('filter').xsetn('multFreq', cv.value) }}",  
+	Array.prNew(5),  Event.prNew,  Array.prNew(16),  Event.prNew,  
+	Array.prNew(16),  Event.prNew,  Array.prNew(16),  Event.prNew,  
+	Array.prNew(16),  Event.prNew,  Array.prNew(16),  Array.prNew(5),  
+	Event.prNew,  Array.prNew(16),  Event.prNew,  Array.prNew(8),  
+	NetAddr.prNew,  "192.168.1.4",  Event.prNew,  Array.prNew(16),  
+	Event.prNew,  Array.prNew(8),  NetAddr.prNew,  "192.168.1.4",  
+	Event.prNew,  Array.prNew(16),  Event.prNew,  Array.prNew(8),  
+	NetAddr.prNew,  "192.168.1.4",  Event.prNew,  Array.prNew(16),  
+	Event.prNew,  Array.prNew(8),  NetAddr.prNew,  "192.168.1.4",  
+	Event.prNew,  Array.prNew(16),  Event.prNew,  Array.prNew(8),  
+	NetAddr.prNew,  "192.168.1.4",  Event.prNew,  Array.prNew(16),  
+	"(1..5)",  "1",  "/vosc/red%",  Event.prNew,  
+	Array.prNew(16),  IdentityDictionary.prNew,  Array.prNew(32),  Event.prNew,  
+	Array.prNew(8),  "// focus 'actions' tab
+			{ |view|
+				AbstractCVWidgetEditor.allEditors.do({ |ed|
+					case
+						{ ed.keys.includes(\\hi) or:{ ed.keys.includes(\\lo) }} {
+							#[lo, hi].do({ |k|
+								ed[k] !? {
+									if(ed[k].editor.notNil and:{
+										ed[k].editor.isClosed.not and:{
+											view == ed[k].tabs.view
+										}
+									}) { ed[k].editor.tabs.focus(3) }
+								}
+							})
+						}
+						{ ed.keys.select(_.isNumber).size == ed.keys.size } {}
+						{
+							if(ed.editor.notNil and:{
+								ed.editor.isClosed.not and:{
+									view == ed.tabs.view
+								}
+							}) { ed.editor.tabs.focus(3) }
+						}
+					;
+				})
+			}",  Event.prNew,  Array.prNew(8),  
+	"// focus 'midi' tab
+			{ |view|
+				AbstractCVWidgetEditor.allEditors.do({ |ed|
+					case
+						{ ed.keys.includes(\\hi) or:{ ed.keys.includes(\\lo) }} {
+							#[lo, hi].do({ |k|
+								ed[k] !? {
+									if(ed[k].editor.notNil and:{
+										ed[k].editor.isClosed.not and:{
+											view == ed[k].tabs.view
+										}
+									}) { ed[k].editor.tabs.focus(1) }
+								}
+							})
+						}
+						{ ed.keys.select(_.isNumber).size == ed.keys.size } {
+							ed.keys.do({ |k|
+								ed[k] !? {
+									if(ed[k].editor.notNil and:{
+										ed[k].editor.isClosed.not and:{
+											view == ed[k].tabs.view
+										}
+									}) { ed[k].editor.tabs.focus(0) }
+								}
+							})
+						}
+						{
+							if(ed.editor.notNil and:{
+								ed.editor.isClosed.not and:{
+									view == ed.tabs.view
+								}
+							}) { ed.editor.tabs.focus(1) }
+						}
+					;
+				})
+			}",  Event.prNew,  Array.prNew(8),  "// focus 'specs' tab
+			{ |view|
+				AbstractCVWidgetEditor.allEditors.do({ |ed|
+					case
+						{ ed.keys.includes(\\hi) or:{ ed.keys.includes(\\lo) }} {
+							#[lo, hi].do({ |k|
+								ed[k] !? {
+									if(ed[k].editor.notNil and:{
+										ed[k].editor.isClosed.not and:{
+											view == ed[k].tabs.view
+										}
+									}) { ed[k].editor.tabs.focus(0) }
+								}
+							})
+						}
+						{ ed.keys.select(_.isNumber).size == ed.keys.size } {}
+						{
+							if(ed.editor.notNil and:{
+								ed.editor.isClosed.not and:{
+									view == ed.tabs.view
+								}
+							}) { ed.editor.tabs.focus(0) }
+						}
+					;
+				})
+			}",  
+	Event.prNew,  Array.prNew(8),  "// collect OSC-commands resp. open the collector's GUI
+			{ OSCCommands.front }",  Event.prNew,  
+	Array.prNew(8),  "// close the editor
+			{ |view|
+				AbstractCVWidgetEditor.allEditors.do({ |ed|
+					case
+						{ ed.keys.includes(\\hi) or:{ ed.keys.includes(\\lo) }} {
+							#[lo, hi].do({ |k|
+								ed[k] !? {
+									if(ed[k].editor.notNil and:{
+										ed[k].editor.isClosed.not and:{
+											view == ed[k].tabs.view
+										}
+									}) { ed[k].editor.close(k) }
+								}
+							})
+						}
+						{ ed.keys.select(_.isNumber).size == ed.keys.size } {
+							ed.keys.do({ |k|
+								ed[k] !? {
+									if(ed[k].editor.notNil and:{
+										ed[k].editor.isClosed.not and:{
+											view == ed[k].tabs.view
+										}
+									}) { ed[k].editor.close(k) }
+								}
+							})
+						}
+						{
+							if(ed.editor.notNil and:{
+								ed.editor.isClosed.not and:{
+									view == ed.tabs.view
+								}
+							}) { ed.editor.close }
+						}
+					;
+				})
+			}",  Event.prNew,  Array.prNew(8),  
+	"// focus 'osc' tab
+			{ |view|
+				AbstractCVWidgetEditor.allEditors.do({ |ed|
+					case
+						{ ed.keys.includes(\\hi) or:{ ed.keys.includes(\\lo) }} {
+							#[lo, hi].do({ |k|
+								ed[k] !? {
+									if(ed[k].editor.notNil and:{
+										ed[k].editor.isClosed.not and:{
+											view == ed[k].tabs.view
+										}
+									}) { ed[k].editor.tabs.focus(2) }
+								}
+							})
+						}
+						{ ed.keys.select(_.isNumber).size == ed.keys.size } {
+							ed.keys.do({ |k|
+								ed[k] !? {
+									if(ed[k].editor.notNil and:{
+										ed[k].editor.isClosed.not and:{
+											view == ed[k].tabs.view
+										}
+									}) { ed[k].editor.tabs.focus(1) }
+								}
+							})
+						}
+						{
+							if(ed.editor.notNil and:{
+								ed.editor.isClosed.not and:{
+									view == ed.tabs.view
+								}
+							}) { ed.editor.tabs.focus(2) }
+						}
+					;
+				})
+			}",  IdentityDictionary.prNew,  Array.prNew(32),  Event.prNew,  
+	Array.prNew(24),  "{
+if(CVCenter.scv[\\meter].isNil or:{
+ CVCenter.scv[\\meter].window.isClosed
+}) {
+ CVCenter.scv.put(\\meter, ServerMeter(Server.default));
+};
+CVCenter.scv[\\meter].window.front;
+}",  Event.prNew,  Array.prNew(24),  
+	"{ MyRecorder.front }",  Event.prNew,  Array.prNew(24),  "// bring all Windows to front and call CVCenter.front *afterwards*
+			{ Window.allWindows.do(_.front); CVCenter.front }",  
+	Event.prNew,  Array.prNew(24),  "{ s.plotTree }",  Event.prNew,  
+	Array.prNew(24),  "{ CVCenterLoadDialog() }",  IdentityDictionary.prNew,  Array.prNew(64),  
+	Event.prNew,  Array.prNew(8),  "// open a CVWidget(MS)Editor and focus its Actions tab
+			{ |view|
+				block { |break|
+					CVCenter.all.keys.do({ |key|
+						if(CVCenter.cvWidgets[key].focusElements.includes(view)) {
+							break.value(
+								switch(CVCenter.cvWidgets[key].class,
+									CVWidgetMS, {
+										if(CVCenter.cvWidgets[key].editor.msEditor.isNil or:{
+											CVCenter.cvWidgets[key].editor.msEditor.isClosed }
+										) {
+											CVWidgetMSEditor(CVCenter.cvWidgets[key], 3)
+										} {
+											CVCenter.cvWidgets[key].editor.msEditor.front(3)
+										}
+									},
+									CVWidget2D, { #[lo, hi].do({ |slot|
+										if(CVCenter.cvWidgets[key].editor[slot].isNil or:{
+											CVCenter.cvWidgets[key].editor[slot].isClosed }
+										) {
+											CVWidgetEditor(CVCenter.cvWidgets[key], 3, slot)
+										} {
+											CVCenter.cvWidgets[key].editor[slot].front(3)
+										}
+									})},
+									{
+										if(CVCenter.cvWidgets[key].editor.isNil or:{
+											CVCenter.cvWidgets[key].editor.isClosed }
+										) {
+											CVWidgetEditor(CVCenter.cvWidgets[key], 3)
+										} {
+											CVCenter.cvWidgets[key].editor.front(3)
+										}
+									}
+								)
+							)
+						}
+					})
+				};
+				true;
+			}",  Event.prNew,  
+	Array.prNew(8),  "// reset current OSC calibration constraints and start OSC calibration
+			{ |view|
+				block { |break|
+					CVCenter.all.keys.do({ |key|
+						if(CVCenter.cvWidgets[key].focusElements.includes(view)) {
+							break.value(
+								switch(CVCenter.cvWidgets[key].class,
+									CVWidgetMS, {
+										CVCenter.cvWidgets[key].msSize.do(
+											CVCenter.cvWidgets[key].setOscInputConstraints(Point(0.0001), _);
+											CVCenter.cvWidgets[key].setCalibrate(true, _)
+										)
+									},
+									CVWidget2D, {
+										#[lo, hi].do(
+											CVCenter.cvWidgets[key].setOscInputConstraints(Point(0.0001), _);
+											CVCenter.cvWidgets[key].setCalibrate(true, _)
+										)
+									},
+									{
+										CVCenter.cvWidgets[key]
+										.setOscInputConstraints(Point(0.0001))
+										.setCalibrate(true)
+									}
+								)
+							)
+						}
+					})
+				};
+				true;
+			}",  Event.prNew,  Array.prNew(16),  
+	"// focus previous widget (alphabetically ordered)
+			{ |view|
+				block { |break|
+					CVCenter.cvWidgets.order.do({ |name, i|
+						if(CVCenter.cvWidgets[name].focusElements.includes(view)) {
+							break.value(
+								CVCenter.cvWidgets[CVCenter.cvWidgets.order.wrapAt(i-1)].parent.front.focus;
+								CVCenter.cvWidgets[CVCenter.cvWidgets.order.wrapAt(i-1)].label.focus;
+							)
+						}
+					})
+				};
+				true;
+			}",  Event.prNew,  Array.prNew(8),  "// set focus to the view that contains the widget
+			{ CVCenter.prefPane.focus }",  
+	Event.prNew,  Array.prNew(8),  "// open a CVWidget(MS)Editor and focus its MIDI tab
+			{ |view|
+				block { |break|
+					CVCenter.all.keys.do({ |key|
+						if(CVCenter.cvWidgets[key].focusElements.includes(view)) {
+							break.value(
+								switch(CVCenter.cvWidgets[key].class,
+									CVWidgetMS, {
+										if(CVCenter.cvWidgets[key].editor.msEditor.isNil or:{
+											CVCenter.cvWidgets[key].editor.msEditor.isClosed }
+										) {
+											CVWidgetMSEditor(CVCenter.cvWidgets[key], 1)
+										} {
+											CVCenter.cvWidgets[key].editor.msEditor.front(1)
+										}
+									},
+									CVWidget2D, { #[lo, hi].do({ |slot|
+										if(CVCenter.cvWidgets[key].editor[slot].isNil or:{
+											CVCenter.cvWidgets[key].editor[slot].isClosed }
+										) {
+											CVWidgetEditor(CVCenter.cvWidgets[key], 1, slot)
+										} {
+											CVCenter.cvWidgets[key].editor[slot].front(1)
+										}
+									})},
+									{
+										if(CVCenter.cvWidgets[key].editor.isNil or:{
+											CVCenter.cvWidgets[key].editor.isClosed }
+										) {
+											CVWidgetEditor(CVCenter.cvWidgets[key], 1)
+										} {
+											CVCenter.cvWidgets[key].editor.front(1)
+										}
+									}
+								)
+							)
+						}
+					})
+				};
+				true;
+			}",  Event.prNew,  
+	Array.prNew(16),  "// focus next widget (alphabetically ordered)
+			{ |view|
+				block { |break|
+					CVCenter.cvWidgets.order.do({ |name, i|
+						if(CVCenter.cvWidgets[name].focusElements.includes(view)) {
+							break.value(
+								CVCenter.cvWidgets[CVCenter.cvWidgets.order.wrapAt(i+1)].parent.front.focus;
+								CVCenter.cvWidgets[CVCenter.cvWidgets.order.wrapAt(i+1)].label.focus;
+							)
+						}
+					})
+				};
+				true;
+			}",  Event.prNew,  Array.prNew(8),  
+	"// open a CVWidget(MS)Editor and focus its Spec tab
+			{ |view|
+				block { |break|
+					CVCenter.all.keys.do({ |key|
+						if(CVCenter.cvWidgets[key].focusElements.includes(view)) {
+							break.value(
+								switch(CVCenter.cvWidgets[key].class,
+									CVWidgetMS, {
+										if(CVCenter.cvWidgets[key].editor.msEditor.isNil or:{
+											CVCenter.cvWidgets[key].editor.msEditor.isClosed }
+										) {
+											CVWidgetMSEditor(CVCenter.cvWidgets[key], 0)
+										} {
+											CVCenter.cvWidgets[key].editor.msEditor.front(0)
+										}
+									},
+									CVWidget2D, { #[lo, hi].do({ |slot|
+										if(CVCenter.cvWidgets[key].editor[slot].isNil or:{
+											CVCenter.cvWidgets[key].editor[slot].isClosed }
+										) {
+											CVWidgetEditor(CVCenter.cvWidgets[key], 0, slot)
+										} {
+											CVCenter.cvWidgets[key].editor[slot].front(0)
+										}
+									})},
+									{
+										if(CVCenter.cvWidgets[key].editor.isNil or:{
+											CVCenter.cvWidgets[key].editor.isClosed }
+										) {
+											CVWidgetEditor(CVCenter.cvWidgets[key], 0)
+										} {
+											CVCenter.cvWidgets[key].editor.front(0)
+										}
+									}
+								)
+							)
+						}
+					})
+				};
+				true;
+			}",  Event.prNew,  Array.prNew(8),  "// start or stop OSC calibration
+			{ |view|
+				block { |break|
+					CVCenter.all.keys.do({ |key|
+						if(CVCenter.cvWidgets[key].focusElements.includes(view)) {
+							break.value(
+								switch(CVCenter.cvWidgets[key].class,
+									CVWidgetMS, {
+										if(
+											CVCenter.cvWidgets[key].msSize.collect(
+												CVCenter.cvWidgets[key].getCalibrate(_)
+											).select(_ == true).size == CVCenter.cvWidgets[key].msSize
+										) {
+											CVCenter.cvWidgets[key].msSize.do(
+												CVCenter.cvWidgets[key].setCalibrate(false, _)
+											)
+										} {
+											CVCenter.cvWidgets[key].msSize.do(
+												CVCenter.cvWidgets[key].setCalibrate(true, _)
+											)
+										}
+									},
+									CVWidget2D, {
+										if(
+											#[lo, hi].collect(
+												CVCenter.cvWidgets[key].getCalibrate(_)
+											).select(_ == true).size == 2
+										) {
+											#[lo, hi].do(CVCenter.cvWidgets[key].setCalibrate(false, _))
+										} {
+											#[lo, hi].do(CVCenter.cvWidgets[key].setCalibrate(true, _))
+										}
+									},
+									{
+										if(CVCenter.cvWidgets[key].getCalibrate == true) {
+											CVCenter.cvWidgets[key].setCalibrate(false)
+										} {
+											CVCenter.cvWidgets[key].setCalibrate(true)
+										}
+									}
+								)
+							)
+						}
+					})
+				};
+				true;
+			}",  
+	Event.prNew,  Array.prNew(16),  "// connect or disconnect textfields
+			{ |view|
+				CVCenter.all.keys.do({ |key|
+					if(CVCenter.cvWidgets[key].focusElements.includes(view)) {
+						CVCenter.cvWidgets[key].connectGUI(nil, CVCenter.cvWidgets[key].connectTF.not);
+					}
+				});
+				true;
+			}",  Event.prNew,  
+	Array.prNew(16),  "// connect or disconnect sliders
+			{ |view|
+				CVCenter.all.keys.do({ |key|
+					if(CVCenter.cvWidgets[key].focusElements.includes(view)) {
+						CVCenter.cvWidgets[key].connectGUI(CVCenter.cvWidgets[key].connectS.not, nil);
+					}
+				});
+				true;
+			}",  Event.prNew,  Array.prNew(8),  
+	"// open a CVWidget(MS)Editor and focus its OSC tab
+			{ |view|
+				block { |break|
+					CVCenter.all.keys.do({ |key|
+						if(CVCenter.cvWidgets[key].focusElements.includes(view)) {
+							break.value(
+								switch(CVCenter.cvWidgets[key].class,
+									CVWidgetMS, {
+										if(CVCenter.cvWidgets[key].editor.msEditor.isNil or:{
+											CVCenter.cvWidgets[key].editor.msEditor.isClosed }
+										) {
+											CVWidgetMSEditor(CVCenter.cvWidgets[key], 2)
+										} {
+											CVCenter.cvWidgets[key].editor.msEditor.front(2)
+										}
+									},
+									CVWidget2D, { #[lo, hi].do({ |slot|
+										if(CVCenter.cvWidgets[key].editor[slot].isNil or:{
+											CVCenter.cvWidgets[key].editor[slot].isClosed }
+										) {
+											CVWidgetEditor(CVCenter.cvWidgets[key], 2, slot)
+										} {
+											CVCenter.cvWidgets[key].editor[slot].front(2)
+										}
+									})},
+									{
+										if(CVCenter.cvWidgets[key].editor.isNil or:{
+											CVCenter.cvWidgets[key].editor.isClosed }
+										) {
+											CVWidgetEditor(CVCenter.cvWidgets[key], 2)
+										} {
+											CVCenter.cvWidgets[key].editor.front(2)
+										}
+									}
+								)
+							)
+						}
+					})
+				};
+				true;
+			}",  IdentityDictionary.prNew,  Array.prNew(128),  Event.prNew,  
+	Array.prNew(8),  "// focus tab 5
+				{ CVCenter.tabs.tabViews[5] !? { CVCenter.tabs.focus(5) }}",  Event.prNew,  Array.prNew(8),  
+	"// AllGui
+			{ if (\\AllGui.asClass.notNil) {
+				if (CVCenter.scv.allWin.isNil or:{ CVCenter.scv.allWin.isClosed }) {
+					CVCenter.scv.allGui = \\AllGui.asClass.new;
+					CVCenter.scv.allWin = CVCenter.scv.allGui.parent;
+				};
+				if (CVCenter.scv.allWin.notNil and:{
+					CVCenter.scv.allWin.isClosed.not
+				}) { CVCenter.scv.allWin.front };
+			}}",  Event.prNew,  Array.prNew(8),  "// focus tab 7
+				{ CVCenter.tabs.tabViews[7] !? { CVCenter.tabs.focus(7) }}",  
+	Event.prNew,  Array.prNew(8),  "// detach the currently focused tab from the main window
+			{ CVCenter.tabs.activeTab.detachTab }",  Event.prNew,  
+	Array.prNew(8),  "// focus tab 2
+				{ CVCenter.tabs.tabViews[2] !? { CVCenter.tabs.focus(2) }}",  Event.prNew,  Array.prNew(16),  
+	"// PdefAllGui
+			{ if (CVCenter.scv.pDefWin.isNil or:{ CVCenter.scv.pDefWin.isClosed }) {
+				CVCenter.scv.pDefGui = PdefAllGui();
+				CVCenter.scv.pDefWin = CVCenter.scv.pDefGui.parent
+			};
+			if (CVCenter.scv.pDefWin.notNil and:{
+				CVCenter.scv.pDefWin.isClosed.not
+			}) {
+				CVCenter.scv.pDefWin.front
+			}}",  Event.prNew,  Array.prNew(8),  "// focus tab 1
+				{ CVCenter.tabs.tabViews[1] !? { CVCenter.tabs.focus(1) }}",  
+	Event.prNew,  Array.prNew(16),  "// deactivate OSC calibration for all widgets
+			{ CVCenter.cvWidgets.do({ |wdgt|
+				switch(wdgt.class,
+					CVWidget2D, {
+						#[lo, hi].do({ |sl| wdgt.setCalibrate(false, sl) });
+					},
+					CVWidgetMS, {
+						wdgt.msSize.do({ |i| wdgt.setCalibrate(false, i) });
+					},
+					{ wdgt.setCalibrate(false) }
+				)
+			}) }",  Event.prNew,  
+	Array.prNew(8),  "// TdefAllGui
+			{ if (CVCenter.scv.tDefWin.isNil or:{ CVCenter.scv.tDefWin.isClosed }) {
+				CVCenter.scv.tDefGui = TdefAllGui();
+				CVCenter.scv.tDefWin = CVCenter.scv.tDefGui.parent
+			};
+			if (CVCenter.scv.tDefWin.notNil and:{
+				CVCenter.scv.tDefWin.isClosed.not
+			}) {
+				CVCenter.scv.tDefWin.front
+			}}",  Event.prNew,  Array.prNew(8),  
+	"// MasterEQ
+			{ if (\\MasterEQ.asClass.notNil) {
+				if (CVCenter.scv.eqWin.isNil or:{ CVCenter.scv.eqWin.isClosed }){
+					CVCenter.scv.eqGui = \\MasterEQ.asClass.new(
+						Server.default.options.firstPrivateBus, Server.default
+					);
+					CVCenter.scv.eqWin = CVCenter.scv.eqGui.window;
+				};
+				if (CVCenter.scv.eqWin.notNil and:{
+					CVCenter.scv.eqWin.isClosed.not
+				}) { CVCenter.scv.eqWin.front };
+			}}",  Event.prNew,  Array.prNew(16),  "// connect/disconnect sliders in all widgets
+			{ CVCenter.cvWidgets.do({ |wdgt|
+				wdgt.connectGUI(wdgt.connectS.not, nil)
+			})}",  
+	Event.prNew,  Array.prNew(16),  "// set temporary shortcuts
+			{ CVCenterShortcutsEditor.dialog }",  Event.prNew,  
+	Array.prNew(16),  "// activate OSC calibration for all widgets
+			{ CVCenter.cvWidgets.do({ |wdgt|
+				switch(wdgt.class,
+					CVWidget2D, {
+						#[lo, hi].do({ |sl| wdgt.setCalibrate(true, sl) });
+					},
+					CVWidgetMS, {
+						wdgt.msSize.do({ |i| wdgt.setCalibrate(true, i) });
+					},
+					{ wdgt.setCalibrate(true) }
+				)
+			}) }",  Event.prNew,  Array.prNew(16),  
+	"// select first widget
+			{
+				var labels = CVCenter.cvWidgets.order;
+				CVCenter.cvWidgets[labels.first].parent.front.focus;
+				CVCenter.cvWidgets[labels.first].label.focus;
+			}",  Event.prNew,  Array.prNew(8),  "// save setup
+			{ CVCenter.saveSetup }",  
+	Event.prNew,  Array.prNew(16),  "// OSCCommands gui
+			{ OSCCommands.front }",  Event.prNew,  
+	Array.prNew(16),  "// end History and open in new Document (Cocoa-IDE only)
+			{
+				History.end;
+				if (Platform.ideName == \"scapp\" or:{
+					(Platform.ideName == \"scqt\").and(Main.versionAtLeast(3, 7))
+				}) { History.document };
+				if (CVCenter.scv.historyWin.notNil and:{
+					CVCenter.scv.historyWin.isClosed.not
+				}) { CVCenter.scv.historyWin.close }
+			}",  Event.prNew,  Array.prNew(16),  
+	"// reset and restart OSC calibration for all widgets
+			{ CVCenter.cvWidgets.do({ |wdgt|
+				switch(wdgt.class,
+					CVWidget2D, {
+						#[lo, hi].do({ |sl|
+							wdgt.setOscInputConstraints(Point(0.0001, 0.0001), sl).setCalibrate(true, sl);
+						})
+					},
+					CVWidgetMS, {
+						wdgt.msSize.do({ |i|
+							wdgt.setOscInputConstraints(Point(0.0001, 0.0001), i).setCalibrate(true, i);
+						})
+					},
+					{ wdgt.setOscInputConstraints(Point(0.0001, 0.0001)).setCalibrate(true) }
+				)
+			}) }",  Event.prNew,  Array.prNew(16),  "// connect/disconnect textfields in all widgets
+			{ CVCenter.cvWidgets.do({ |wdgt|
+				wdgt.connectGUI(nil, wdgt.connectTF.not)
+			})}",  
+	Event.prNew,  Array.prNew(16),  "// PdefnAllGui
+			{ if (CVCenter.scv.pDefnWin.isNil or:{ CVCenter.scv.pDefnWin.isClosed }) {
+				CVCenter.scv.pDefnGui = PdefnAllGui();
+				CVCenter.scv.pDefnWin = CVCenter.scv.pDefnGui.parent;
+			};
+			if (CVCenter.scv.pDefnWin.notNil and:{
+				CVCenter.scv.pDefnWin.isClosed.not
+			}) {
+				CVCenter.scv.pDefnWin.front
+			}}",  Event.prNew,  
+	Array.prNew(16),  "// close all CVWidget(MS)Editors
+			AbstractCVWidgetEditor.allEditors.pairsDo({ |k, v|
+				switch(CVCenter.cvWidgets[k].class,
+					CVWidgetKnob, {
+						v.editor !? { v.editor.close }
+					},
+					CVWidget2D, { #[lo, hi].do({ |sl|
+						v[sl] !? { v[sl].editor !? { v[sl].editor.close }}
+					}) },
+					CVWidgetMS, {
+						CVCenter.cvWidgets[k].msSize.do({ |i|
+							v[i] !? { v[i].editor !? { v[i].editor.close }}
+						})
+					}
+				);
+				CVCenter.cvWidgets[k] !? {
+					v.editor !? { v.editor.close }
+				}
+			})",  Event.prNew,  Array.prNew(8),  
+	"// History GUI: start History and open History window
+			{ if (History.started === false) { History.start };
+			if (CVCenter.scv.historyWin.isNil or:{
+				CVCenter.scv.historyWin.isClosed
+			}) {
+				CVCenter.scv.historyGui = History.makeWin(
+					Window.screenBounds.width-300@Window.screenBounds.height
+				);
+				CVCenter.scv.historyWin = CVCenter.scv.historyGui.parent;
+			};
+			if (CVCenter.scv.historyWin.notNil and:{
+				CVCenter.scv.historyWin.isClosed.not
+			}) { CVCenter.scv.historyWin.front }}",  Event.prNew,  Array.prNew(8),  "// focus tab 0
+				{ CVCenter.tabs.tabViews[0] !? { CVCenter.tabs.focus(0) }}",  
+	Event.prNew,  Array.prNew(16),  "// select last widget
+			{
+				var labels = CVCenter.cvWidgets.order;
+				CVCenter.cvWidgets[labels.last].parent.front.focus;
+				CVCenter.cvWidgets[labels.last].label.focus;
+			}",  Event.prNew,  
+	Array.prNew(8),  "// focus tab 6
+				{ CVCenter.tabs.tabViews[6] !? { CVCenter.tabs.focus(6) }}",  Event.prNew,  Array.prNew(8),  
+	"// NdefMixer
+			{ if (CVCenter.scv.nDefWin.isNil or:{ CVCenter.scv.nDefWin.isClosed }) {
+				CVCenter.scv.nDefGui = NdefMixer(Server.default);
+				CVCenter.scv.nDefWin = CVCenter.scv.nDefGui.parent
+			};
+			if (CVCenter.scv.nDefWin.notNil and:{
+				CVCenter.scv.nDefWin.isClosed.not
+			}) {
+				CVCenter.scv.nDefWin.front
+			}}",  Event.prNew,  Array.prNew(8),  "// focus tab 3
+				{ CVCenter.tabs.tabViews[3] !? { CVCenter.tabs.focus(3) }}",  
+	Event.prNew,  Array.prNew(8),  "// CVCenterControllersMonitor MIDI
+			{ CVCenterControllersMonitor(0) }",  Event.prNew,  
+	Array.prNew(8),  "// focus tab 9
+				{ CVCenter.tabs.tabViews[9] !? { CVCenter.tabs.focus(9) }}",  Event.prNew,  Array.prNew(8),  
+	"// load setup
+			{ CVCenterLoadDialog.new }",  Event.prNew,  Array.prNew(8),  "// open the preferences dialog
+			{ CVCenterPreferences.dialog }",  
+	Event.prNew,  Array.prNew(8),  "// focus tab 4
+				{ CVCenter.tabs.tabViews[4] !? { CVCenter.tabs.focus(4) }}",  Event.prNew,  
+	Array.prNew(8),  "// next tab
+			{
+				CVCenter.tabs.focus(
+					(CVCenter.tabs.activeTab.index+1).wrap(0, CVCenter.tabs.tabViews.size-1)
+				)
+			}",  Event.prNew,  Array.prNew(8),  
+	"// focus tab 8
+				{ CVCenter.tabs.tabViews[8] !? { CVCenter.tabs.focus(8) }}",  Event.prNew,  Array.prNew(8),  "// previous tab
+			{
+				CVCenter.tabs.focus(
+					(CVCenter.tabs.activeTab.index-1).wrap(0, CVCenter.tabs.tabViews.size-1)
+				)
+			}",  
+	Event.prNew,  Array.prNew(8),  "// CVCenterControllersMonitor OSC
+			{ CVCenterControllersMonitor(1) }",  Event.prNew,  
+	Array.prNew(64),  "Add some notes if you like",  Event.prNew,  Array.prNew(4),  
+	Array.prNew(5),  Event.prNew,  Array.prNew(16),  Event.prNew,  
+	Array.prNew(16),  Event.prNew,  Array.prNew(16),  Event.prNew,  
+	Array.prNew(16),  Event.prNew,  Array.prNew(16),  ControlSpec.prNew,  
+	Array.prNew(5),  Array.prNew(5),  ExponentialWarp.prNew,  ControlSpec.prNew,  
+	" Hz",  Array.prNew(5),  Array.prNew(5),  Array.prNew(5),  
+	Array.prNew(5),  Array.prNew(5),  Array.prNew(5),  Event.prNew,  
+	Array.prNew(16),  Event.prNew,  Array.prNew(8),  NetAddr.prNew,  
+	"192.168.1.4",  Event.prNew,  Array.prNew(16),  Event.prNew,  
+	Array.prNew(8),  NetAddr.prNew,  "192.168.1.4",  Event.prNew,  
+	Array.prNew(16),  Event.prNew,  Array.prNew(8),  NetAddr.prNew,  
+	"192.168.1.4",  Event.prNew,  Array.prNew(16),  Event.prNew,  
+	Array.prNew(8),  NetAddr.prNew,  "192.168.1.4",  Event.prNew,  
+	Array.prNew(16),  Event.prNew,  Array.prNew(8),  NetAddr.prNew,  
+	"192.168.1.4",  Event.prNew,  Array.prNew(16),  "(1..5)",  
+	"1",  "/vosc/green%"
+];
+p = [
+	// Library
+	0, [ dictionary: o[1] ],  
+	// IdentityDictionary
+	1, [ array: o[2],  size: 1,  
+		proto: nil,  parent: nil,  
+		know: false ],  
+	// Array
+	2, [ nil,  nil,  nil,  nil,  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  nil,  nil,  
+		'all',  o[3],  nil,  nil,  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  nil,  nil ],  
+	// Event
+	3, [ array: o[4],  size: 6,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	4, [ 'durs',  o[5],  nil,  nil,  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  'snapshots',  o[68],  
+		'amp',  o[70],  nil,  nil,  
+		nil,  nil,  nil,  nil,  
+		'multFreq',  o[95],  'shortcuts',  o[171],  
+		nil,  nil,  nil,  nil,  
+		'freqs',  o[355],  nil,  nil ],  
+	// Event
+	5, [ array: o[6],  size: 12,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	6, [ nil,  nil,  nil,  nil,  
+		nil,  nil,  'notes',  o[7],  
+		nil,  nil,  'actions',  o[8],  
+		nil,  nil,  'wdgtClass',  CVWidgetMS,  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  nil,  nil,  
+		'midi',  o[10],  nil,  nil,  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  'spec',  o[21],  
+		'connectS',  false,  'connectTF',  false,  
+		nil,  nil,  'val',  o[31],  
+		nil,  nil,  'isSplit',  true,  
+		nil,  nil,  'osc',  o[32],  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  'tabLabel',  'default',  
+		nil,  nil,  'midiOscRememberBatchConnection',  o[63] ],  
+	// Event
+	8, [ array: o[9],  size: 0,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	9, [ nil,  nil,  nil,  nil ],  
+	// Array
+	10, [ o[11],  o[13],  o[15],  o[17],  
+		o[19] ],  
+	// Event
+	11, [ array: o[12],  size: 5,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	12, [ nil,  nil,  'midiResolution',  1.0,  
+		'softWithin',  0.1,  'midiMean',  64,  
+		nil,  nil,  'ctrlButtonBank',  16,  
+		'midiMode',  1,  nil,  nil ],  
+	// Event
+	13, [ array: o[14],  size: 5,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	14, [ nil,  nil,  'midiResolution',  1.0,  
+		'softWithin',  0.1,  'midiMean',  64,  
+		nil,  nil,  'ctrlButtonBank',  16,  
+		'midiMode',  1,  nil,  nil ],  
+	// Event
+	15, [ array: o[16],  size: 5,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	16, [ nil,  nil,  'midiResolution',  1.0,  
+		'softWithin',  0.1,  'midiMean',  64,  
+		nil,  nil,  'ctrlButtonBank',  16,  
+		'midiMode',  1,  nil,  nil ],  
+	// Event
+	17, [ array: o[18],  size: 5,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	18, [ nil,  nil,  'midiResolution',  1.0,  
+		'softWithin',  0.1,  'midiMean',  64,  
+		nil,  nil,  'ctrlButtonBank',  16,  
+		'midiMode',  1,  nil,  nil ],  
+	// Event
+	19, [ array: o[20],  size: 5,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	20, [ nil,  nil,  'midiResolution',  1.0,  
+		'softWithin',  0.1,  'midiMean',  64,  
+		nil,  nil,  'ctrlButtonBank',  16,  
+		'midiMode',  1,  nil,  nil ],  
+	// ControlSpec
+	21, [ minval: o[22],  maxval: o[23],  
+		warp: o[24],  step: o[27],  
+		default: o[28],  units: o[26],  
+		grid: nil,  clipLo: o[29],  
+		clipHi: o[30] ],  
+	// Array
+	22, [ 0.1,  0.1,  0.1,  0.1,  
+		0.1 ],  
+	// Array
+	23, [ 1,  1,  1,  1,  
+		1 ],  
+	// LinearWarp
+	24, [ spec: o[25] ],  
+	// ControlSpec
+	25, [ minval: 0.1,  maxval: 1,  
+		warp: o[24],  step: 0.0,  
+		default: 0.1,  units: o[26],  
+		grid: nil,  clipLo: 0.1,  
+		clipHi: 1.0 ],  
+	// Array
+	27, [ 0.0,  0.0,  0.0,  0.0,  
+		0.0 ],  
+	// Array
+	28, [ 0.1,  0.1,  0.1,  0.1,  
+		0.1 ],  
+	// Array
+	29, [ 0.1,  0.1,  0.1,  0.1,  
+		0.1 ],  
+	// Array
+	30, [ 1.0,  1.0,  1.0,  1.0,  
+		1.0 ],  
+	// Array
+	31, [ 0.10705882394686,  0.10705882394686,  0.10705882394686,  0.10705882394686,  
+		0.10705882394686 ],  
+	// Array
+	32, [ o[33],  o[39],  o[45],  o[51],  
+		o[57] ],  
+	// Event
+	33, [ array: o[34],  size: 5,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	34, [ 'cmdName',  '/vosc/blue1',  'calibConstraints',  o[35],  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  'oscMapping',  'linlin',  
+		'addr',  o[37],  'msgIndex',  1 ],  
+	// Event
+	35, [ array: o[36],  size: 2,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	36, [ 'hi',  1.0,  nil,  nil,  
+		nil,  nil,  'lo',  0.0 ],  
+	// NetAddr
+	37, [ addr: -1062731516,  port: nil,  
+		hostname: o[38],  socket: nil ],  
+	// Event
+	39, [ array: o[40],  size: 5,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	40, [ 'cmdName',  '/vosc/blue2',  'calibConstraints',  o[41],  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  'oscMapping',  'linlin',  
+		'addr',  o[43],  'msgIndex',  1 ],  
+	// Event
+	41, [ array: o[42],  size: 2,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	42, [ 'hi',  1.0,  nil,  nil,  
+		nil,  nil,  'lo',  0.0 ],  
+	// NetAddr
+	43, [ addr: -1062731516,  port: nil,  
+		hostname: o[44],  socket: nil ],  
+	// Event
+	45, [ array: o[46],  size: 5,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	46, [ 'cmdName',  '/vosc/blue3',  'calibConstraints',  o[47],  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  'oscMapping',  'linlin',  
+		'addr',  o[49],  'msgIndex',  1 ],  
+	// Event
+	47, [ array: o[48],  size: 2,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	48, [ 'hi',  1.0,  nil,  nil,  
+		nil,  nil,  'lo',  0.0 ],  
+	// NetAddr
+	49, [ addr: -1062731516,  port: nil,  
+		hostname: o[50],  socket: nil ],  
+	// Event
+	51, [ array: o[52],  size: 5,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	52, [ 'cmdName',  '/vosc/blue4',  'calibConstraints',  o[53],  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  'oscMapping',  'linlin',  
+		'addr',  o[55],  'msgIndex',  1 ],  
+	// Event
+	53, [ array: o[54],  size: 2,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	54, [ 'hi',  1.0,  nil,  nil,  
+		nil,  nil,  'lo',  0.0 ],  
+	// NetAddr
+	55, [ addr: -1062731516,  port: nil,  
+		hostname: o[56],  socket: nil ],  
+	// Event
+	57, [ array: o[58],  size: 5,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	58, [ 'cmdName',  '/vosc/blue5',  'calibConstraints',  o[59],  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  'oscMapping',  'linlin',  
+		'addr',  o[61],  'msgIndex',  1 ],  
+	// Event
+	59, [ array: o[60],  size: 2,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	60, [ 'hi',  1.0,  nil,  nil,  
+		nil,  nil,  'lo',  0.0 ],  
+	// NetAddr
+	61, [ addr: -1062731516,  port: nil,  
+		hostname: o[62],  socket: nil ],  
+	// Event
+	63, [ array: o[64],  size: 4,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	64, [ 'extOscCtrlArrayField',  o[65],  nil,  nil,  
+		'indexField',  o[66],  nil,  nil,  
+		nil,  nil,  'nameField',  o[67],  
+		'intStartIndexField',  0.0,  nil,  nil ],  
+	// Event
+	68, [ array: o[69],  size: 0,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	69, [ nil,  nil,  nil,  nil ],  
+	// Event
+	70, [ array: o[71],  size: 10,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	71, [ nil,  nil,  'spec',  o[72],  
+		'connectTF',  true,  'connectS',  true,  
+		'notes',  o[75],  'actions',  o[76],  
+		'val',  0.7,  'wdgtClass',  CVWidgetKnob,  
+		nil,  nil,  'osc',  o[91],  
+		nil,  nil,  nil,  nil,  
+		'midi',  o[93],  'tabLabel',  'default',  
+		nil,  nil,  nil,  nil ],  
+	// ControlSpec
+	72, [ minval: 0,  maxval: 1,  
+		warp: o[73],  step: 0,  
+		default: 0,  units: o[74],  
+		grid: nil,  clipLo: 0,  
+		clipHi: 1 ],  
+	// FaderWarp
+	73, [ spec: o[72] ],  
+	// Event
+	76, [ array: o[77],  size: 2,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	77, [ nil,  nil,  nil,  nil,  
+		'default1',  o[78],  'default1 (xset)',  o[87] ],  
+	// Event
+	78, [ array: o[79],  size: 1,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	79, [ o[80],  o[85],  nil,  nil ],  
+	// SimpleController
+	80, [ model: o[81],  actions: o[82] ],  
+	// CV
+	81, [ value: 0.7,  spec: o[72] ],  
+	// IdentityDictionary
+	82, [ array: o[83],  size: 1,  
+		proto: nil,  parent: nil,  
+		know: false ],  
+	// Array
+	83, [ nil,  nil,  nil,  nil,  
+		nil,  nil,  nil,  nil,  
+		'synch',  o[84],  nil,  nil,  
+		nil,  nil,  nil,  nil ],  
+	// Array
+	85, [ o[86],  true ],  
+	// Event
+	87, [ array: o[88],  size: 1,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	88, [ nil,  nil,  'dummy',  o[89] ],  
+	// Array
+	89, [ o[90],  false ],  
+	// Event
+	91, [ array: o[92],  size: 1,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	92, [ nil,  nil,  'oscMapping',  'linlin',  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  nil,  nil ],  
+	// Event
+	93, [ array: o[94],  size: 5,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	94, [ nil,  nil,  'midiResolution',  1.0,  
+		'softWithin',  0.1,  nil,  nil,  
+		nil,  nil,  'ctrlButtonBank',  16,  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  'midiMean',  64,  
+		nil,  nil,  nil,  nil,  
+		'midiMode',  1,  nil,  nil ],  
+	// Event
+	95, [ array: o[96],  size: 11,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	96, [ nil,  nil,  nil,  nil,  
+		nil,  nil,  'notes',  o[97],  
+		nil,  nil,  'actions',  o[98],  
+		nil,  nil,  'wdgtClass',  CVWidgetMS,  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  nil,  nil,  
+		'midi',  o[124],  nil,  nil,  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  'spec',  o[105],  
+		'connectS',  false,  'connectTF',  false,  
+		nil,  nil,  'val',  o[104],  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  'osc',  o[135],  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  'tabLabel',  'default',  
+		nil,  nil,  'midiOscRememberBatchConnection',  o[166] ],  
+	// Event
+	98, [ array: o[99],  size: 2,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	99, [ nil,  nil,  nil,  nil,  
+		'default1',  o[100],  'default1 (xsetn)',  o[120] ],  
+	// Event
+	100, [ array: o[101],  size: 1,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	101, [ o[102],  o[118],  nil,  nil ],  
+	// SimpleController
+	102, [ model: o[103],  actions: o[115] ],  
+	// CV
+	103, [ value: o[104],  spec: o[105] ],  
+	// Array
+	104, [ 20.0,  20.0,  20.0,  20.0,  
+		31.745098733809 ],  
+	// ControlSpec
+	105, [ minval: o[106],  maxval: o[107],  
+		warp: o[108],  step: o[111],  
+		default: o[112],  units: o[26],  
+		grid: nil,  clipLo: o[113],  
+		clipHi: o[114] ],  
+	// Array
+	106, [ 20,  20,  20,  20,  
+		20 ],  
+	// Array
+	107, [ 12000,  12000,  12000,  12000,  
+		12000 ],  
+	// LinearWarp
+	108, [ spec: o[109] ],  
+	// ControlSpec
+	109, [ minval: 20,  maxval: 12000,  
+		warp: o[108],  step: 0.0,  
+		default: 20,  units: o[110],  
+		grid: nil,  clipLo: 20,  
+		clipHi: 12000 ],  
+	// Array
+	111, [ 0.0,  0.0,  0.0,  0.0,  
+		0.0 ],  
+	// Array
+	112, [ 20,  20,  20,  20,  
+		20 ],  
+	// Array
+	113, [ 20,  20,  20,  20,  
+		20 ],  
+	// Array
+	114, [ 12000,  12000,  12000,  12000,  
+		12000 ],  
+	// IdentityDictionary
+	115, [ array: o[116],  size: 1,  
+		proto: nil,  parent: nil,  
+		know: false ],  
+	// Array
+	116, [ nil,  nil,  nil,  nil,  
+		nil,  nil,  nil,  nil,  
+		'synch',  o[117],  nil,  nil,  
+		nil,  nil,  nil,  nil ],  
+	// Array
+	118, [ o[119],  true ],  
+	// Event
+	120, [ array: o[121],  size: 1,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	121, [ nil,  nil,  'dummy',  o[122] ],  
+	// Array
+	122, [ o[123],  false ],  
+	// Array
+	124, [ o[125],  o[127],  o[129],  o[131],  
+		o[133] ],  
+	// Event
+	125, [ array: o[126],  size: 5,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	126, [ nil,  nil,  'midiResolution',  1.0,  
+		'softWithin',  0.1,  'midiMean',  64,  
+		nil,  nil,  'ctrlButtonBank',  16,  
+		'midiMode',  1,  nil,  nil ],  
+	// Event
+	127, [ array: o[128],  size: 5,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	128, [ nil,  nil,  'midiResolution',  1.0,  
+		'softWithin',  0.1,  'midiMean',  64,  
+		nil,  nil,  'ctrlButtonBank',  16,  
+		'midiMode',  1,  nil,  nil ],  
+	// Event
+	129, [ array: o[130],  size: 5,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	130, [ nil,  nil,  'midiResolution',  1.0,  
+		'softWithin',  0.1,  'midiMean',  64,  
+		nil,  nil,  'ctrlButtonBank',  16,  
+		'midiMode',  1,  nil,  nil ],  
+	// Event
+	131, [ array: o[132],  size: 5,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	132, [ nil,  nil,  'midiResolution',  1.0,  
+		'softWithin',  0.1,  'midiMean',  64,  
+		nil,  nil,  'ctrlButtonBank',  16,  
+		'midiMode',  1,  nil,  nil ],  
+	// Event
+	133, [ array: o[134],  size: 5,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	134, [ nil,  nil,  'midiResolution',  1.0,  
+		'softWithin',  0.1,  'midiMean',  64,  
+		nil,  nil,  'ctrlButtonBank',  16,  
+		'midiMode',  1,  nil,  nil ],  
+	// Array
+	135, [ o[136],  o[142],  o[148],  o[154],  
+		o[160] ],  
+	// Event
+	136, [ array: o[137],  size: 5,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	137, [ 'cmdName',  '/vosc/red1',  'calibConstraints',  o[138],  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  'oscMapping',  'linlin',  
+		'addr',  o[140],  'msgIndex',  1 ],  
+	// Event
+	138, [ array: o[139],  size: 2,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	139, [ 'hi',  1.0,  nil,  nil,  
+		nil,  nil,  'lo',  0.0 ],  
+	// NetAddr
+	140, [ addr: -1062731516,  port: nil,  
+		hostname: o[141],  socket: nil ],  
+	// Event
+	142, [ array: o[143],  size: 5,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	143, [ 'cmdName',  '/vosc/red2',  'calibConstraints',  o[144],  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  'oscMapping',  'linlin',  
+		'addr',  o[146],  'msgIndex',  1 ],  
+	// Event
+	144, [ array: o[145],  size: 2,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	145, [ 'hi',  1.0,  nil,  nil,  
+		nil,  nil,  'lo',  0.0 ],  
+	// NetAddr
+	146, [ addr: -1062731516,  port: nil,  
+		hostname: o[147],  socket: nil ],  
+	// Event
+	148, [ array: o[149],  size: 5,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	149, [ 'cmdName',  '/vosc/red3',  'calibConstraints',  o[150],  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  'oscMapping',  'linlin',  
+		'addr',  o[152],  'msgIndex',  1 ],  
+	// Event
+	150, [ array: o[151],  size: 2,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	151, [ 'hi',  1.0,  nil,  nil,  
+		nil,  nil,  'lo',  0.0 ],  
+	// NetAddr
+	152, [ addr: -1062731516,  port: nil,  
+		hostname: o[153],  socket: nil ],  
+	// Event
+	154, [ array: o[155],  size: 5,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	155, [ 'cmdName',  '/vosc/red4',  'calibConstraints',  o[156],  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  'oscMapping',  'linlin',  
+		'addr',  o[158],  'msgIndex',  1 ],  
+	// Event
+	156, [ array: o[157],  size: 2,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	157, [ 'hi',  1.0,  nil,  nil,  
+		nil,  nil,  'lo',  0.0 ],  
+	// NetAddr
+	158, [ addr: -1062731516,  port: nil,  
+		hostname: o[159],  socket: nil ],  
+	// Event
+	160, [ array: o[161],  size: 5,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	161, [ 'cmdName',  '/vosc/red5',  'calibConstraints',  o[162],  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  'oscMapping',  'linlin',  
+		'addr',  o[164],  'msgIndex',  1 ],  
+	// Event
+	162, [ array: o[163],  size: 2,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	163, [ 'hi',  1.0,  nil,  nil,  
+		nil,  nil,  'lo',  0.0 ],  
+	// NetAddr
+	164, [ addr: -1062731516,  port: nil,  
+		hostname: o[165],  socket: nil ],  
+	// Event
+	166, [ array: o[167],  size: 4,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	167, [ 'extOscCtrlArrayField',  o[168],  nil,  nil,  
+		'indexField',  o[169],  nil,  nil,  
+		nil,  nil,  'nameField',  o[170],  
+		'intStartIndexField',  0.0,  nil,  nil ],  
+	// Event
+	171, [ array: o[172],  size: 4,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	172, [ nil,  nil,  nil,  nil,  
+		'cvWidgetEditor',  o[173],  'globalShortcuts',  o[193],  
+		nil,  nil,  nil,  nil,  
+		'cvWidget',  o[210],  'cvCenter',  o[245] ],  
+	// IdentityDictionary
+	173, [ array: o[174],  size: 6,  
+		proto: nil,  parent: nil,  
+		know: false ],  
+	// Array
+	174, [ nil,  nil,  nil,  nil,  
+		'a',  o[175],  nil,  nil,  
+		nil,  nil,  'm',  o[178],  
+		's',  o[181],  nil,  nil,  
+		nil,  nil,  'c',  o[184],  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  'esc',  o[187],  
+		nil,  nil,  'o',  o[190] ],  
+	// Event
+	175, [ array: o[176],  size: 2,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	176, [ nil,  nil,  'func',  o[177],  
+		'keyCode',  97,  nil,  nil ],  
+	// Event
+	178, [ array: o[179],  size: 2,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	179, [ nil,  nil,  'func',  o[180],  
+		'keyCode',  109,  nil,  nil ],  
+	// Event
+	181, [ array: o[182],  size: 2,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	182, [ nil,  nil,  'func',  o[183],  
+		'keyCode',  115,  nil,  nil ],  
+	// Event
+	184, [ array: o[185],  size: 2,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	185, [ nil,  nil,  'func',  o[186],  
+		'keyCode',  99,  nil,  nil ],  
+	// Event
+	187, [ array: o[188],  size: 2,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	188, [ nil,  nil,  'func',  o[189],  
+		'keyCode',  65307,  nil,  nil ],  
+	// Event
+	190, [ array: o[191],  size: 2,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	191, [ nil,  nil,  'func',  o[192],  
+		'keyCode',  111,  nil,  nil ],  
+	// IdentityDictionary
+	193, [ array: o[194],  size: 5,  
+		proto: nil,  parent: nil,  
+		know: false ],  
+	// Array
+	194, [ nil,  nil,  nil,  nil,  
+		'fn + F3',  o[195],  nil,  nil,  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  nil,  nil,  
+		'fn + F5',  o[198],  nil,  nil,  
+		nil,  nil,  'fn + F1',  o[201],  
+		'fn + F4',  o[204],  nil,  nil,  
+		nil,  nil,  'fn + F2',  o[207] ],  
+	// Event
+	195, [ array: o[196],  size: 2,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	196, [ nil,  nil,  'func',  o[197],  
+		'keyCode',  69,  nil,  nil,  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  nil,  nil ],  
+	// Event
+	198, [ array: o[199],  size: 2,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	199, [ nil,  nil,  'func',  o[200],  
+		'keyCode',  65474,  nil,  nil,  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  nil,  nil ],  
+	// Event
+	201, [ array: o[202],  size: 2,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	202, [ nil,  nil,  'func',  o[203],  
+		'keyCode',  67,  nil,  nil,  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  nil,  nil ],  
+	// Event
+	204, [ array: o[205],  size: 2,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	205, [ nil,  nil,  'func',  o[206],  
+		'keyCode',  70,  nil,  nil,  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  nil,  nil ],  
+	// Event
+	207, [ array: o[208],  size: 2,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	208, [ nil,  nil,  'func',  o[209],  
+		'keyCode',  68,  nil,  nil,  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  nil,  nil ],  
+	// IdentityDictionary
+	210, [ array: o[211],  size: 11,  
+		proto: nil,  parent: nil,  
+		know: false ],  
+	// Array
+	211, [ nil,  nil,  nil,  nil,  
+		'a',  o[212],  'r',  o[215],  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  nil,  nil,  
+		'alt + arrow left',  o[218],  'esc',  o[221],  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  'm',  o[224],  
+		'alt + arrow right',  o[227],  's',  o[230],  
+		nil,  nil,  'c',  o[233],  
+		nil,  nil,  'shift + v',  o[236],  
+		'shift + b',  o[239],  nil,  nil,  
+		nil,  nil,  'o',  o[242] ],  
+	// Event
+	212, [ array: o[213],  size: 2,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	213, [ nil,  nil,  'func',  o[214],  
+		'keyCode',  97,  nil,  nil ],  
+	// Event
+	215, [ array: o[216],  size: 2,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	216, [ nil,  nil,  'func',  o[217],  
+		'keyCode',  114,  nil,  nil ],  
+	// Event
+	218, [ array: o[219],  size: 4,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	219, [ nil,  nil,  nil,  nil,  
+		'keyCode',  65361,  nil,  nil,  
+		'modifierQt',  524288,  'func',  o[220],  
+		nil,  nil,  'modifierCocoa',  524288 ],  
+	// Event
+	221, [ array: o[222],  size: 2,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	222, [ nil,  nil,  'func',  o[223],  
+		'keyCode',  65307,  nil,  nil ],  
+	// Event
+	224, [ array: o[225],  size: 2,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	225, [ nil,  nil,  'func',  o[226],  
+		'keyCode',  109,  nil,  nil ],  
+	// Event
+	227, [ array: o[228],  size: 4,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	228, [ nil,  nil,  nil,  nil,  
+		'keyCode',  65363,  nil,  nil,  
+		'modifierQt',  524288,  'func',  o[229],  
+		nil,  nil,  'modifierCocoa',  524288 ],  
+	// Event
+	230, [ array: o[231],  size: 2,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	231, [ nil,  nil,  'func',  o[232],  
+		'keyCode',  115,  nil,  nil ],  
+	// Event
+	233, [ array: o[234],  size: 2,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	234, [ nil,  nil,  'func',  o[235],  
+		'keyCode',  99,  nil,  nil ],  
+	// Event
+	236, [ array: o[237],  size: 4,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	237, [ nil,  nil,  nil,  nil,  
+		'keyCode',  118,  nil,  nil,  
+		'modifierQt',  131072,  'func',  o[238],  
+		nil,  nil,  'modifierCocoa',  131072 ],  
+	// Event
+	239, [ array: o[240],  size: 4,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	240, [ nil,  nil,  nil,  nil,  
+		'keyCode',  98,  nil,  nil,  
+		'modifierQt',  131072,  'func',  o[241],  
+		nil,  nil,  'modifierCocoa',  131072 ],  
+	// Event
+	242, [ array: o[243],  size: 2,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	243, [ nil,  nil,  'func',  o[244],  
+		'keyCode',  111,  nil,  nil ],  
+	// IdentityDictionary
+	245, [ array: o[246],  size: 36,  
+		proto: nil,  parent: nil,  
+		know: false ],  
+	// Array
+	246, [ '5',  o[247],  nil,  nil,  
+		'a',  o[250],  nil,  nil,  
+		'7',  o[253],  'd',  o[256],  
+		'2',  o[259],  'shift + p',  o[262],  
+		nil,  nil,  '1',  o[265],  
+		nil,  nil,  nil,  nil,  
+		'alt + shift + c',  o[268],  nil,  nil,  
+		nil,  nil,  't',  o[271],  
+		'e',  o[274],  'alt + shift + b',  o[277],  
+		'alt + s',  o[280],  nil,  nil,  
+		'shift + c',  o[283],  nil,  nil,  
+		'alt + arrow right',  o[286],  's',  o[289],  
+		nil,  nil,  'alt + c',  o[292],  
+		nil,  nil,  'shift + h',  o[295],  
+		nil,  nil,  nil,  nil,  
+		'shift + r',  o[298],  nil,  nil,  
+		'alt + shift + v',  o[301],  nil,  nil,  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  'alt + p',  o[304],  
+		nil,  nil,  nil,  nil,  
+		'shift + esc',  o[307],  nil,  nil,  
+		'h',  o[310],  '0',  o[313],  
+		'alt + arrow left',  o[316],  nil,  nil,  
+		nil,  nil,  nil,  nil,  
+		'6',  o[319],  'n',  o[322],  
+		nil,  nil,  '3',  o[325],  
+		nil,  nil,  'm',  o[328],  
+		'9',  o[331],  nil,  nil,  
+		'l',  o[334],  'p',  o[337],  
+		'4',  o[340],  'arrow right',  o[343],  
+		'8',  o[346],  nil,  nil,  
+		'arrow left',  o[349],  'o',  o[352] ],  
+	// Event
+	247, [ array: o[248],  size: 2,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	248, [ nil,  nil,  'func',  o[249],  
+		'keyCode',  53,  nil,  nil ],  
+	// Event
+	250, [ array: o[251],  size: 2,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	251, [ nil,  nil,  'func',  o[252],  
+		'keyCode',  97,  nil,  nil ],  
+	// Event
+	253, [ array: o[254],  size: 2,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	254, [ nil,  nil,  'func',  o[255],  
+		'keyCode',  55,  nil,  nil ],  
+	// Event
+	256, [ array: o[257],  size: 2,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	257, [ nil,  nil,  'func',  o[258],  
+		'keyCode',  100,  nil,  nil ],  
+	// Event
+	259, [ array: o[260],  size: 2,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	260, [ nil,  nil,  'func',  o[261],  
+		'keyCode',  50,  nil,  nil ],  
+	// Event
+	262, [ array: o[263],  size: 4,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	263, [ nil,  nil,  nil,  nil,  
+		'keyCode',  112,  nil,  nil,  
+		'modifierQt',  131072,  'func',  o[264],  
+		nil,  nil,  'modifierCocoa',  131072 ],  
+	// Event
+	265, [ array: o[266],  size: 2,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	266, [ nil,  nil,  'func',  o[267],  
+		'keyCode',  49,  nil,  nil ],  
+	// Event
+	268, [ array: o[269],  size: 4,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	269, [ nil,  nil,  nil,  nil,  
+		'keyCode',  99,  nil,  nil,  
+		'modifierQt',  655360,  'func',  o[270],  
+		nil,  nil,  'modifierCocoa',  655360 ],  
+	// Event
+	271, [ array: o[272],  size: 2,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	272, [ nil,  nil,  'func',  o[273],  
+		'keyCode',  116,  nil,  nil ],  
+	// Event
+	274, [ array: o[275],  size: 2,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	275, [ nil,  nil,  'func',  o[276],  
+		'keyCode',  101,  nil,  nil ],  
+	// Event
+	277, [ array: o[278],  size: 4,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	278, [ nil,  nil,  nil,  nil,  
+		'keyCode',  98,  nil,  nil,  
+		'modifierQt',  655360,  'func',  o[279],  
+		nil,  nil,  'modifierCocoa',  655360 ],  
+	// Event
+	280, [ array: o[281],  size: 4,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	281, [ nil,  nil,  nil,  nil,  
+		'keyCode',  115,  nil,  nil,  
+		'modifierQt',  524288,  'func',  o[282],  
+		nil,  nil,  'modifierCocoa',  524288 ],  
+	// Event
+	283, [ array: o[284],  size: 4,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	284, [ nil,  nil,  nil,  nil,  
+		'keyCode',  99,  nil,  nil,  
+		'modifierQt',  131072,  'func',  o[285],  
+		nil,  nil,  'modifierCocoa',  131072 ],  
+	// Event
+	286, [ array: o[287],  size: 4,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	287, [ nil,  nil,  nil,  nil,  
+		'keyCode',  65363,  nil,  nil,  
+		'modifierQt',  524288,  'func',  o[288],  
+		nil,  nil,  'modifierCocoa',  524288 ],  
+	// Event
+	289, [ array: o[290],  size: 2,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	290, [ nil,  nil,  'func',  o[291],  
+		'keyCode',  115,  nil,  nil ],  
+	// Event
+	292, [ array: o[293],  size: 4,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	293, [ nil,  nil,  nil,  nil,  
+		'keyCode',  99,  nil,  nil,  
+		'modifierQt',  524288,  'func',  o[294],  
+		nil,  nil,  'modifierCocoa',  524288 ],  
+	// Event
+	295, [ array: o[296],  size: 4,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	296, [ nil,  nil,  nil,  nil,  
+		'keyCode',  104,  nil,  nil,  
+		'modifierQt',  131072,  'func',  o[297],  
+		nil,  nil,  'modifierCocoa',  131072 ],  
+	// Event
+	298, [ array: o[299],  size: 4,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	299, [ nil,  nil,  nil,  nil,  
+		'keyCode',  114,  nil,  nil,  
+		'modifierQt',  131072,  'func',  o[300],  
+		nil,  nil,  'modifierCocoa',  131072 ],  
+	// Event
+	301, [ array: o[302],  size: 4,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	302, [ nil,  nil,  nil,  nil,  
+		'keyCode',  118,  nil,  nil,  
+		'modifierQt',  655360,  'func',  o[303],  
+		nil,  nil,  'modifierCocoa',  655360 ],  
+	// Event
+	304, [ array: o[305],  size: 4,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	305, [ nil,  nil,  nil,  nil,  
+		'keyCode',  112,  nil,  nil,  
+		'modifierQt',  524288,  'func',  o[306],  
+		nil,  nil,  'modifierCocoa',  524288 ],  
+	// Event
+	307, [ array: o[308],  size: 4,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	308, [ nil,  nil,  nil,  nil,  
+		'keyCode',  65307,  nil,  nil,  
+		'modifierQt',  131072,  'func',  o[309],  
+		nil,  nil,  'modifierCocoa',  131072 ],  
+	// Event
+	310, [ array: o[311],  size: 2,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	311, [ nil,  nil,  'func',  o[312],  
+		'keyCode',  104,  nil,  nil ],  
+	// Event
+	313, [ array: o[314],  size: 2,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	314, [ nil,  nil,  'func',  o[315],  
+		'keyCode',  48,  nil,  nil ],  
+	// Event
+	316, [ array: o[317],  size: 4,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	317, [ nil,  nil,  nil,  nil,  
+		'keyCode',  65361,  nil,  nil,  
+		'modifierQt',  524288,  'func',  o[318],  
+		nil,  nil,  'modifierCocoa',  524288 ],  
+	// Event
+	319, [ array: o[320],  size: 2,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	320, [ nil,  nil,  'func',  o[321],  
+		'keyCode',  54,  nil,  nil ],  
+	// Event
+	322, [ array: o[323],  size: 2,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	323, [ nil,  nil,  'func',  o[324],  
+		'keyCode',  110,  nil,  nil ],  
+	// Event
+	325, [ array: o[326],  size: 2,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	326, [ nil,  nil,  'func',  o[327],  
+		'keyCode',  51,  nil,  nil ],  
+	// Event
+	328, [ array: o[329],  size: 2,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	329, [ nil,  nil,  'func',  o[330],  
+		'keyCode',  109,  nil,  nil ],  
+	// Event
+	331, [ array: o[332],  size: 2,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	332, [ nil,  nil,  'func',  o[333],  
+		'keyCode',  57,  nil,  nil ],  
+	// Event
+	334, [ array: o[335],  size: 2,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	335, [ nil,  nil,  'func',  o[336],  
+		'keyCode',  49,  nil,  nil ],  
+	// Event
+	337, [ array: o[338],  size: 2,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	338, [ nil,  nil,  'func',  o[339],  
+		'keyCode',  112,  nil,  nil ],  
+	// Event
+	340, [ array: o[341],  size: 2,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	341, [ nil,  nil,  'func',  o[342],  
+		'keyCode',  52,  nil,  nil ],  
+	// Event
+	343, [ array: o[344],  size: 2,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	344, [ nil,  nil,  'func',  o[345],  
+		'keyCode',  65363,  nil,  nil ],  
+	// Event
+	346, [ array: o[347],  size: 2,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	347, [ nil,  nil,  'func',  o[348],  
+		'keyCode',  56,  nil,  nil ],  
+	// Event
+	349, [ array: o[350],  size: 2,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	350, [ nil,  nil,  'func',  o[351],  
+		'keyCode',  65361,  nil,  nil ],  
+	// Event
+	352, [ array: o[353],  size: 2,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	353, [ nil,  nil,  'func',  o[354],  
+		'keyCode',  111,  nil,  nil ],  
+	// Event
+	355, [ array: o[356],  size: 12,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	356, [ nil,  nil,  nil,  nil,  
+		nil,  nil,  'notes',  o[357],  
+		nil,  nil,  'actions',  o[358],  
+		nil,  nil,  'wdgtClass',  CVWidgetMS,  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  nil,  nil,  
+		'midi',  o[360],  nil,  nil,  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  'spec',  o[371],  
+		'connectS',  false,  'connectTF',  false,  
+		nil,  nil,  'val',  o[381],  
+		nil,  nil,  'isSplit',  true,  
+		nil,  nil,  'osc',  o[382],  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  'tabLabel',  'default',  
+		nil,  nil,  'midiOscRememberBatchConnection',  o[413] ],  
+	// Event
+	358, [ array: o[359],  size: 0,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	359, [ nil,  nil,  nil,  nil ],  
+	// Array
+	360, [ o[361],  o[363],  o[365],  o[367],  
+		o[369] ],  
+	// Event
+	361, [ array: o[362],  size: 5,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	362, [ nil,  nil,  'midiResolution',  1.0,  
+		'softWithin',  0.1,  'midiMean',  64,  
+		nil,  nil,  'ctrlButtonBank',  16,  
+		'midiMode',  1,  nil,  nil ],  
+	// Event
+	363, [ array: o[364],  size: 5,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	364, [ nil,  nil,  'midiResolution',  1.0,  
+		'softWithin',  0.1,  'midiMean',  64,  
+		nil,  nil,  'ctrlButtonBank',  16,  
+		'midiMode',  1,  nil,  nil ],  
+	// Event
+	365, [ array: o[366],  size: 5,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	366, [ nil,  nil,  'midiResolution',  1.0,  
+		'softWithin',  0.1,  'midiMean',  64,  
+		nil,  nil,  'ctrlButtonBank',  16,  
+		'midiMode',  1,  nil,  nil ],  
+	// Event
+	367, [ array: o[368],  size: 5,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	368, [ nil,  nil,  'midiResolution',  1.0,  
+		'softWithin',  0.1,  'midiMean',  64,  
+		nil,  nil,  'ctrlButtonBank',  16,  
+		'midiMode',  1,  nil,  nil ],  
+	// Event
+	369, [ array: o[370],  size: 5,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	370, [ nil,  nil,  'midiResolution',  1.0,  
+		'softWithin',  0.1,  'midiMean',  64,  
+		nil,  nil,  'ctrlButtonBank',  16,  
+		'midiMode',  1,  nil,  nil ],  
+	// ControlSpec
+	371, [ minval: o[372],  maxval: o[373],  
+		warp: o[374],  step: o[377],  
+		default: o[378],  units: o[376],  
+		grid: nil,  clipLo: o[379],  
+		clipHi: o[380] ],  
+	// Array
+	372, [ 25,  25,  25,  25,  
+		25 ],  
+	// Array
+	373, [ 4200,  4200,  4200,  4200,  
+		4200 ],  
+	// ExponentialWarp
+	374, [ spec: o[375] ],  
+	// ControlSpec
+	375, [ minval: 25,  maxval: 4200,  
+		warp: o[374],  step: 0,  
+		default: 440,  units: o[376],  
+		grid: nil,  clipLo: 25,  
+		clipHi: 4200 ],  
+	// Array
+	377, [ 0,  0,  0,  0,  
+		0 ],  
+	// Array
+	378, [ 440,  440,  440,  440,  
+		440 ],  
+	// Array
+	379, [ 25,  25,  25,  25,  
+		25 ],  
+	// Array
+	380, [ 4200,  4200,  4200,  4200,  
+		4200 ],  
+	// Array
+	381, [ 25.0,  25.0,  25.0,  25.0,  
+		25.0 ],  
+	// Array
+	382, [ o[383],  o[389],  o[395],  o[401],  
+		o[407] ],  
+	// Event
+	383, [ array: o[384],  size: 5,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	384, [ 'cmdName',  '/vosc/green1',  'calibConstraints',  o[385],  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  'oscMapping',  'linexp',  
+		'addr',  o[387],  'msgIndex',  1 ],  
+	// Event
+	385, [ array: o[386],  size: 2,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	386, [ 'hi',  1.0,  nil,  nil,  
+		nil,  nil,  'lo',  0.0 ],  
+	// NetAddr
+	387, [ addr: -1062731516,  port: nil,  
+		hostname: o[388],  socket: nil ],  
+	// Event
+	389, [ array: o[390],  size: 5,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	390, [ 'cmdName',  '/vosc/green2',  'calibConstraints',  o[391],  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  'oscMapping',  'linexp',  
+		'addr',  o[393],  'msgIndex',  1 ],  
+	// Event
+	391, [ array: o[392],  size: 2,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	392, [ 'hi',  1.0,  nil,  nil,  
+		nil,  nil,  'lo',  0.0 ],  
+	// NetAddr
+	393, [ addr: -1062731516,  port: nil,  
+		hostname: o[394],  socket: nil ],  
+	// Event
+	395, [ array: o[396],  size: 5,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	396, [ 'cmdName',  '/vosc/green3',  'calibConstraints',  o[397],  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  'oscMapping',  'linexp',  
+		'addr',  o[399],  'msgIndex',  1 ],  
+	// Event
+	397, [ array: o[398],  size: 2,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	398, [ 'hi',  1.0,  nil,  nil,  
+		nil,  nil,  'lo',  0.0 ],  
+	// NetAddr
+	399, [ addr: -1062731516,  port: nil,  
+		hostname: o[400],  socket: nil ],  
+	// Event
+	401, [ array: o[402],  size: 5,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	402, [ 'cmdName',  '/vosc/green4',  'calibConstraints',  o[403],  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  'oscMapping',  'linexp',  
+		'addr',  o[405],  'msgIndex',  1 ],  
+	// Event
+	403, [ array: o[404],  size: 2,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	404, [ 'hi',  1.0,  nil,  nil,  
+		nil,  nil,  'lo',  0.0 ],  
+	// NetAddr
+	405, [ addr: -1062731516,  port: nil,  
+		hostname: o[406],  socket: nil ],  
+	// Event
+	407, [ array: o[408],  size: 5,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	408, [ 'cmdName',  '/vosc/green5',  'calibConstraints',  o[409],  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  'oscMapping',  'linexp',  
+		'addr',  o[411],  'msgIndex',  1 ],  
+	// Event
+	409, [ array: o[410],  size: 2,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	410, [ 'hi',  1.0,  nil,  nil,  
+		nil,  nil,  'lo',  0.0 ],  
+	// NetAddr
+	411, [ addr: -1062731516,  port: nil,  
+		hostname: o[412],  socket: nil ],  
+	// Event
+	413, [ array: o[414],  size: 4,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	414, [ 'extOscCtrlArrayField',  o[415],  nil,  nil,  
+		'indexField',  o[416],  nil,  nil,  
+		nil,  nil,  'nameField',  o[417],  
+		'intStartIndexField',  0.0,  nil,  nil ]
+];
+prUnarchive(o,p);
