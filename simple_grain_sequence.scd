@@ -93,7 +93,7 @@ Ndef(\filter, {
 
 // add Ndef(\filter) in between Ndef(\ppar) and Ndef(\stereo)
 Ndef(\stereo) <<> Ndef(\filter) <<> Ndef(\ppar);
-// you may simply swith back to the old (unfiltered) chain
+// you may simply switch back to the old (unfiltered) chain
 Ndef(\stereo) <<> Ndef(\ppar);
 
 // define a suitable ControlSpec for the multFreq control in the filter Ndef

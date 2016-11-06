@@ -37,13 +37,12 @@ var one, two;
 // sclang does not respect operator precedence!!
 one = 45 / 37 + 56 * 0.34;
 two = one ** 3;
-trunc(one * two, 2); // result -> posted to the console
+trunc(one * two, 0.01); // result -> posted to the console
 )
 
 // a block of code like the previous one may be defined in a function which
 // makes it reusable whenever needed
-(
-// a varibale prefixed with a ~ is called an environment variable
+// a variable prefixed with a ~ denotes an environment variable
 // environment variables are valid glaobally
 // functions are denoted by a pair of {} brackets
 (
@@ -51,14 +50,14 @@ trunc(one * two, 2); // result -> posted to the console
 	// a function may be defined with arguments,
 	// variables that can be passed in when the function is called
 	// arguments may have default values
-	arg a = 37, arg b = 3;
+	arg a = 37, b = 3;
 	var one, two;
 	one = 45 / a + 56 * 0.34;
 	two = one ** b;
 	// functions do not have a dedicated return value
 	// the last expression in the function will be returned as result
-	trunc(one * two, 2);
-}
+	trunc(one * two, 0.01);
+};
 )
 
 // call the function without arguments
@@ -107,3 +106,36 @@ a.release;
 // note: hitting cmd/ctrl + . will free any currently playing synth
 
 /*
+rather than playing functions it is recommended to create SynthDefs explicitely
+as temporary SynthDefs remain in memory and pile up over time. SynthDefs are the basic structure within every sound creation in SC. There are various other ways to define sound generating structures (e.g. NodeProxy, Ndef, ProxySpace, Instr) but behind the scenes they will always create a SynthDef. Writing a SynthDef is more difficult than writing a function.
+*/
+(
+SynthDef(\simpleSine, { |out=0, freq=#[234, 236], amp=0.2|
+	var sig = SinOsc.ar(freq);
+	// we need to explicitely declare an output bus
+	Out.ar(out, sig * amp);
+}).add; // temporarlily add the SynthDef to the SynthDescLIb
+)
+
+a = Synth(\simpleSine);
+a.set(\freq, [256, 261]);
+a.free;
+
+// the same thing, using an Ndef
+(
+Ndef(\simpleSine, { |freq=#[234, 236], amp=0.2|
+	// differently to a SynthDef we don't declare an outbus
+	// routing to audio outputs is handled by the Ndef itself
+	SinOsc.ar(freq) * amp;
+}).mold(2, \audio);
+)
+
+Ndef(\simpleSine).play
+
+// in contrary to a SynthDef an Ndef can be rewritten while the Ndef is playing
+// the internal Synth will be stopped (or faded out) and be replaced by a new one
+Ndef(\simpleSine).fadeTime_(15);
+Ndef(\simpleSine, { |freq=#[145, 167], amp=0.2| Pulse.ar(freq) * amp });
+
+// fade out and stop
+Ndef(\simpleSine).clear(10);
