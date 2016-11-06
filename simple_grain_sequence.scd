@@ -103,5 +103,4 @@ Spec.add(\multFreq, #[20, 12000]);
 Ndef(\filter).cvcGui
 
 // clean up when done
-Ndef.clear;
-Pdef.clear;
+Ndef.clear; Pdef.clear;

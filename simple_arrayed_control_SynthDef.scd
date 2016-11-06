@@ -29,7 +29,7 @@ a.setn(\sinFreq, Array.fill(k, { 100.rrand(2000) }));
 // adjust to your device's IP address
 n = NetAddr("192.168.1.4", 32000);
 
-// see if any OSC messages are coming in (takes a lot of CPU!)
+// see if any OSC messages are coming in ( warning: takes a lot of CPU!)
 OSCFunc.trace(true);
 // switch off OSC racing again
 OSCFunc.trace(false);
@@ -70,7 +70,10 @@ n.disconnect;
 // take a shortcut: use CVCenter
 a.cvcGui;
 
-// clean up
-a.free;
+// setup OSC listening
+(1..10).do{ |i| CVCenter.cvWidgets[\sinFreq].oscConnect(name: "/vosc/blue" ++ i, oscMsgIndex: 1, slot: i-1) };
 
-Platform.userAppSupportDir.openOS;
+// clean up
+(1..10).do{ |i| CVCenter.cvWidgets[\sinFreq].oscDisconnect(i-1) };
+a.free;
+CVCenter.removeAll;
