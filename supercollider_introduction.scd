@@ -32,9 +32,10 @@ the interpreter to only executed inbetween the brackets.
 // when executing several lines of code each line must end with a semicolon
 (
 // some variable declarations
-// the varaibales will only be valid within the executed block of code
+// the variables will only be valid within the currently executed block of code
 var one, two;
-// sclang does not respect operator precedence!!
+// sclang does not respect arithmetic operator precedence!!
+// every line is simply executed from left to right
 one = 45 / 37 + 56 * 0.34;
 two = one ** 3;
 trunc(one * two, 0.01); // result -> posted to the console
