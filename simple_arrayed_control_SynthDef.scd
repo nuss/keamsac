@@ -27,7 +27,7 @@ a.setn(\sinFreq, Array.fill(k, { 100.rrand(2000) }));
 
 // the IP address on which VideOSC is running
 // adjust to your device's IP address
-n = NetAddr("192.168.1.4", 32000);
+n = NetAddr("192.168.0.101", 32000);
 
 // see if any OSC messages are coming in ( warning: takes a lot of CPU!)
 OSCFunc.trace(true);
@@ -38,7 +38,7 @@ OSCFunc.trace(false);
 // constraints and curve
 // for convenience it's named like the control name in the SynthDef, allowing
 // an automatic detection of the right spec when used with CVCenter
-Spec.add(\sinFreq, #[10, 1000, \exp]);
+Spec.add(\sinFreq, #[50, 1000, \exp]);
 
 // set the frequency of each oscillator within the oscillator bank in Synth a
 // from within an OSCdef, each listening to a different messages coming one pixel

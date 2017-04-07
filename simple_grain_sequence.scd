@@ -1,10 +1,26 @@
-// a definition for an enveloped mono channel synth
+// a definition for an enveloped *mono* channel synth
 // will only live for duration of the envelope
 (
 SynthDef(\grain, { |out=0, freq=300, amp=0.3|
 	OffsetOut.ar(out, Pulse.ar(freq) * EnvGen.kr(Env.perc, doneAction: 2) * 0.2)
 }).add;
 )
+
+// test the SynthDef
+Synth(\grain)
+
+// test the SynthDef in a simple sequencer
+// the .play call at the end creates the EventStreamPlayer!
+(
+p = Pbind(
+	\instrument, \grain,
+	\dur, CVCenter.use(\dur, #[0.1, 0.5]),
+	\freq, Pwhite(30, 400)
+).trace.play;
+)
+
+// stop the EventStreamPlayer again
+p.stop
 
 // boot the default server
 s.boot;
@@ -101,6 +117,7 @@ Ndef(\stereo) <<> Ndef(\ppar);
 // automatically when adding the Ndef's controls to CVCenter
 Spec.add(\multFreq, #[20, 12000]);
 Ndef(\filter).cvcGui
+Ndef(\stereo).clear(10)
 
 // clean up when done
 Ndef.clear; Pdef.clear;

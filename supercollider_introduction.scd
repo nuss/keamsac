@@ -118,6 +118,7 @@ SynthDef(\simpleSine, { |out=0, freq=#[234, 236], amp=0.2|
 }).add; // temporarlily add the SynthDef to the SynthDescLIb
 )
 
+// instantiate a new Synth from SynthDef \simpleSine
 a = Synth(\simpleSine);
 a.set(\freq, [256, 261]);
 a.free;
@@ -130,6 +131,10 @@ Ndef(\simpleSine, { |freq=#[234, 236], amp=0.2|
 	SinOsc.ar(freq) * amp;
 }).mold(2, \audio);
 )
+
+Ndef(\simpleSine).fadeTime_(0)
+
+Ndef(\simpleSine).clear(5)
 
 Ndef(\simpleSine).play
 
